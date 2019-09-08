@@ -17,6 +17,11 @@ $db = mysqli_connect("localhost", "id10588493_admin", "123456", "id10588493_gosm
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <script src="typeahead.min.js"></script>
     <script src="../js/imagezoom.js"></script>
+    <style>
+        .panel-footer {
+            background-color: white;
+        }
+    </style>
   </head>
   <body>
 <header>
@@ -82,8 +87,8 @@ $db = mysqli_connect("localhost", "id10588493_admin", "123456", "id10588493_gosm
   <div class="container">
       <div class="row">
         <div class="col-sm-4">
-          <div class="panel panel-primary">
-            <div class="panel-heading">Apple Homepod Black</div>
+          <div class="panel panel-default">
+            <div class="panel-heading">Arlo 4K Outdoor Camera</div>
             <div class="panel-body">
               <?php
               $db = mysqli_connect("localhost", "id10588493_admin", "123456", "id10588493_gosmart");
@@ -93,13 +98,15 @@ $db = mysqli_connect("localhost", "id10588493_admin", "123456", "id10588493_gosm
               echo "<img src='".$row["image"]."' class='img-responsive' style='width:100%' alt='Image'>";
               ?>
             </div>
-            <div class="panel-footer">Apple Homepod Black</div>
-            <input type="submit" class="btn btn-primary" value="Submit">
-          </div>
+            <div class="panel-footer">Arlo 4K Outdoor Camera
+            <a href="other/arlo4koutdoorcamera.php" style="float:right;">Detail...</a>
+            </div>
+            <button style='float:right;'  class='btn btn-default add_product' pid='$prod_id' id='$prod_id'>Add To Cart</button>
+          </div><br><br>
         </div>
         <div class="col-sm-4">
-          <div class="panel panel-danger">
-            <div class="panel-heading">Apple Homepod White</div>
+          <div class="panel panel-default">
+            <div class="panel-heading">D-Link Indoor Camera</div>
             <div class="panel-body">
               <?php
               $db = mysqli_connect("localhost", "id10588493_admin", "123456", "id10588493_gosmart");
@@ -109,12 +116,15 @@ $db = mysqli_connect("localhost", "id10588493_admin", "123456", "id10588493_gosm
               echo "<img src='".$row["image"]."' class='img-responsive' style='width:100%' alt='Image'>";
               ?>
             </div>
-            <div class="panel-footer">Apple Homepod White</div>
-          </div>
+            <div class="panel-footer">D-Link Indoor Camera
+            <a href="other/dlinkindoorcamera.php" style="float:right;">Detail...</a>
+            </div>
+            <button style='float:right;'  class='btn btn-default add_product' pid='$prod_id' id='$prod_id'>Add To Cart</button>
+          </div><br><br>
         </div>
         <div class="col-sm-4">
-          <div class="panel panel-success">
-            <div class="panel-heading">Apple TV</div>
+          <div class="panel panel-default">
+            <div class="panel-heading">D-Link Mini Wifi Plug</div>
             <div class="panel-body">
               <?php
               $db = mysqli_connect("localhost", "id10588493_admin", "123456", "id10588493_gosmart");
@@ -124,114 +134,127 @@ $db = mysqli_connect("localhost", "id10588493_admin", "123456", "id10588493_gosm
               echo "<img src='".$row["image"]."' class='img-responsive' style='width:100%' alt='Image'>";
               ?>
             </div>
-            <div class="panel-footer">Apple TV</div>
-          </div>
+            <div class="panel-footer">D-Link Mini Wifi Plug
+            <a href="other/dlinkminiwifiplug.php" style="float:right;">Detail...</a>
+            </div>
+            <button style='float:right;'  class='btn btn-default add_product' pid='$prod_id' id='$prod_id'>Add To Cart</button>
+          </div><br><br>
         </div>
       </div>
     </div>
     <div class="container">
       <div class="row">
         <div class="col-sm-4">
-          <div class="panel panel-primary">
-            <div class="panel-heading">Apple Homepod Black</div>
+          <div class="panel panel-default">
+            <div class="panel-heading">Eve Air Quality Monitor</div>
             <div class="panel-body">
               <?php
               $db = mysqli_connect("localhost", "id10588493_admin", "123456", "id10588493_gosmart");
-              $sql = "SELECT * FROM other WHERE image_id = 1";
+              $sql = "SELECT * FROM other WHERE image_id = 4";
               $result = mysqli_query($db, $sql);
               $row = mysqli_fetch_array($result);
               echo "<img src='".$row["image"]."' class='img-responsive' style='width:100%' alt='Image'>";
               ?>
             </div>
-            <div class="panel-footer">Apple Homepod Black</div>
-            <input type="submit" class="btn btn-primary" value="Submit">
+            <div class="panel-footer">Eve Air Quality Monitor
+            <a href="other/eveairqualitymonitor.php" style="float:right;">Detail...</a>
+            </div>
+            <button style='float:right;'  class='btn btn-default add_product' pid='$prod_id' id='$prod_id'>Add To Cart</button>
+          </div><br><br>
+        </div>
+        <div class="col-sm-4">
+          <div class="panel panel-default">
+            <div class="panel-heading">Eve Degree Connected</div>
+            <div class="panel-body">
+              <?php
+              $db = mysqli_connect("localhost", "id10588493_admin", "123456", "id10588493_gosmart");
+              $sql = "SELECT * FROM other WHERE image_id = 5";
+              $result = mysqli_query($db, $sql);
+              $row = mysqli_fetch_array($result);
+              echo "<img src='".$row["image"]."' class='img-responsive' style='width:100%' alt='Image'>";
+              ?>
+            </div>
+            <div class="panel-footer">Eve Degree Connected</div>
           </div>
         </div>
         <div class="col-sm-4">
-          <div class="panel panel-danger">
-            <div class="panel-heading">Apple Homepod White</div>
+          <div class="panel panel-default">
+            <div class="panel-heading">Lenovo Smart Plug</div>
             <div class="panel-body">
               <?php
               $db = mysqli_connect("localhost", "id10588493_admin", "123456", "id10588493_gosmart");
-              $sql = "SELECT * FROM other WHERE image_id = 2";
+              $sql = "SELECT * FROM other WHERE image_id = 6";
               $result = mysqli_query($db, $sql);
               $row = mysqli_fetch_array($result);
               echo "<img src='".$row["image"]."' class='img-responsive' style='width:100%' alt='Image'>";
               ?>
             </div>
-            <div class="panel-footer">Apple Homepod White</div>
-          </div>
-        </div>
-        <div class="col-sm-4">
-          <div class="panel panel-success">
-            <div class="panel-heading">Apple TV</div>
-            <div class="panel-body">
-              <?php
-              $db = mysqli_connect("localhost", "id10588493_admin", "123456", "id10588493_gosmart");
-              $sql = "SELECT * FROM other WHERE image_id = 3";
-              $result = mysqli_query($db, $sql);
-              $row = mysqli_fetch_array($result);
-              echo "<img src='".$row["image"]."' class='img-responsive' style='width:100%' alt='Image'>";
-              ?>
+            <div class="panel-footer">Lenovo Smart Plug
+            <a href="other/lenovosmartplug.php" style="float:right;">Detail...</a>
             </div>
-            <div class="panel-footer">Apple TV</div>
-          </div>
+            <button style='float:right;'  class='btn btn-default add_product' pid='$prod_id' id='$prod_id'>Add To Cart</button>
+          </div><br><br>
         </div>
       </div>
     </div>
     <div class="container">
       <div class="row">
         <div class="col-sm-4">
-          <div class="panel panel-primary">
-            <div class="panel-heading">Apple Homepod Black</div>
+          <div class="panel panel-default">
+            <div class="panel-heading">Lifx Smart Bulb</div>
             <div class="panel-body">
               <?php
               $db = mysqli_connect("localhost", "id10588493_admin", "123456", "id10588493_gosmart");
-              $sql = "SELECT * FROM other WHERE image_id = 1";
+              $sql = "SELECT * FROM other WHERE image_id = 7";
               $result = mysqli_query($db, $sql);
               $row = mysqli_fetch_array($result);
               echo "<img src='".$row["image"]."' class='img-responsive' style='width:100%' alt='Image'>";
               ?>
             </div>
-            <div class="panel-footer">Apple Homepod Black</div>
-            <input type="submit" class="btn btn-primary" value="Submit">
-          </div>
+            <div class="panel-footer">Lifx Smart Bulb
+            <a href="other/lifxsmartbulb.php" style="float:right;">Detail...</a>
+            </div>
+            <button style='float:right;'  class='btn btn-default add_product' pid='$prod_id' id='$prod_id'>Add To Cart</button>
+          </div><br><br>
         </div>
         <div class="col-sm-4">
-          <div class="panel panel-danger">
-            <div class="panel-heading">Apple Homepod White</div>
+          <div class="panel panel-default">
+            <div class="panel-heading">Nanoleaf Smart Canvas</div>
             <div class="panel-body">
               <?php
               $db = mysqli_connect("localhost", "id10588493_admin", "123456", "id10588493_gosmart");
-              $sql = "SELECT * FROM other WHERE image_id = 2";
+              $sql = "SELECT * FROM other WHERE image_id = 8";
               $result = mysqli_query($db, $sql);
               $row = mysqli_fetch_array($result);
               echo "<img src='".$row["image"]."' class='img-responsive' style='width:100%' alt='Image'>";
               ?>
             </div>
-            <div class="panel-footer">Apple Homepod White</div>
-          </div>
+            <div class="panel-footer">Nanoleaf Smart Canvas
+            <a href="other/nanoleafsmartcanvas.php" style="float:right;">Detail...</a>
+            </div>
+            <button style='float:right;'  class='btn btn-default add_product' pid='$prod_id' id='$prod_id'>Add To Cart</button>
+          </div><br><br>
         </div>
         <div class="col-sm-4">
-          <div class="panel panel-success">
-            <div class="panel-heading">Apple TV</div>
+          <div class="panel panel-default">
+            <div class="panel-heading">Nest Outdoor Camera</div>
             <div class="panel-body">
               <?php
               $db = mysqli_connect("localhost", "id10588493_admin", "123456", "id10588493_gosmart");
-              $sql = "SELECT * FROM other WHERE image_id = 3";
+              $sql = "SELECT * FROM other WHERE image_id = 9";
               $result = mysqli_query($db, $sql);
               $row = mysqli_fetch_array($result);
               echo "<img src='".$row["image"]."' class='img-responsive' style='width:100%' alt='Image'>";
               ?>
             </div>
-            <div class="panel-footer">Apple TV</div>
+            <div class="panel-footer">Nest Outdoor Camera</div>
           </div>
         </div>
       </div>
       <div class="pagination">
         <a href="#">&laquo;</a>
-        <a href="#">1</a>
-        <a class="active" href="#">2</a>
+        <a class="active" href="#">1</a>
+        <a href="#">2</a>
         <a href="#">3</a>
         <a href="#">4</a>
         <a href="#">5</a>

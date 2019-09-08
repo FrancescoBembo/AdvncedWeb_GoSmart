@@ -17,6 +17,11 @@
     <script src="../js/imagezoom.js"></script>
     <script src="../js/search.js"></script>
     <script src="../js/searchbar.js"></script>
+    <style>
+        .panel-footer {
+            background-color: white;
+        }
+    </style>
   </head>
   <body>
 <header>
@@ -119,47 +124,44 @@
       <div class="row">
         <div class="col-sm-4">
           <div class="panel panel-default">
-            <div class="panel-heading">Product</div>
+            <div class="panel-heading">NEW</div>
             <div class="panel-body">
               <?php
               $db = mysqli_connect("localhost", "id10588493_admin", "123456", "id10588493_gosmart");
-              $sql = "SELECT * FROM google WHERE image_id = 1";
+              $sql = "SELECT * FROM other WHERE image_id = 24";
               $result = mysqli_query($db, $sql);
               $row = mysqli_fetch_array($result);
               echo "<img src='".$row["image"]."' class='img-responsive' style='width:100%' alt='Image'>";
               ?>
             </div>
-            <div class="panel-footer">Buy 50 mobiles and get a gift card</div>
           </div>
         </div>
         <div class="col-sm-4">
           <div class="panel panel-default">
-            <div class="panel-heading">BLACK FRIDAY DEAL</div>
+            <div class="panel-heading">NEW</div>
             <div class="panel-body">
               <?php
               $db = mysqli_connect("localhost", "id10588493_admin", "123456", "id10588493_gosmart");
-              $sql = "SELECT * FROM google WHERE image_id = 1";
+              $sql = "SELECT * FROM other WHERE image_id = 30";
               $result = mysqli_query($db, $sql);
               $row = mysqli_fetch_array($result);
               echo "<img src='".$row["image"]."' class='img-responsive' style='width:100%' alt='Image'>";
               ?>
             </div>
-            <div class="panel-footer">Buy 50 mobiles and get a gift card</div>
           </div>
         </div>
         <div class="col-sm-4">
           <div class="panel panel-default">
-            <div class="panel-heading">BLACK FRIDAY DEAL</div>
+            <div class="panel-heading">NEW</div>
             <div class="panel-body">
               <?php
               $db = mysqli_connect("localhost", "id10588493_admin", "123456", "id10588493_gosmart");
-              $sql = "SELECT * FROM google WHERE image_id = 1";
+              $sql = "SELECT * FROM other WHERE image_id = 19";
               $result = mysqli_query($db, $sql);
               $row = mysqli_fetch_array($result);
               echo "<img src='".$row["image"]."' class='img-responsive' style='width:100%' alt='Image'>";
               ?>
             </div>
-            <div class="panel-footer">Buy 50 mobiles and get a gift card</div>
           </div>
         </div>
       </div>
