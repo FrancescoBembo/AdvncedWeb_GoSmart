@@ -64,7 +64,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             $_SESSION["username"] = $username;                            
                             
                             // Redirect user to welcome page
-                            header("location: welcome.php");
+                            header("location: welcome.php?login=success");
                         } else{
                             // Display an error message if password is not valid
                             $password_err = "The password you entered was not valid.";
@@ -87,98 +87,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     mysqli_close($link);
 }
 ?>
-
-<!DOCTYPE html>
-  <html lang="en">
-  <head>
-<style>
-
-.text-center {
-    text-align: center!important;
-}
-.form-signin {
-    width: 100%;
-    max-width: 330px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.img-responsive {
-    width: 175px;
-    height: 175px;
-    border-radius: 10px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-
-
-</style>
-
-  <title>GoSmart</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="../styles/style.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <script src="typeahead.min.js"></script>
-    <script src="../js/imagezoom.js"></script>
-  </head>
-  <body>
-<header>
-  <div class="jumbotron">
-    <div class="container text-center">
-      <h1>GoSmart</h1>
-      <p>Get your house ready for the future!</p>
-    </div>
-  </div>
-  <nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="index.php" >GoSmart</a>
-      </div>
-      <div class="collapse navbar-collapse" id="myNavbar">
-        <ul class="nav navbar-nav">
-          <li><a href="index.php">Home</a></li>
-          <li class="dropdown"><a href="product.php" button class="btn btn-secondary dropdown-toggle" id="dropdownMenu5" data-toggle="dropdown" aria-haspopup="true" style="text-align:left">Products</a><div class="dropdown-menu">
-          <div id="div1"><a class="dropdown-item" href="google.php">Google</a></div><br>
-          <div id="div2"><a class="dropdown-item" href="apple.php">Apple</a></div><br>
-          <div id="div3"><a class="dropdown-item" href="amazon.php">Amazon</a></div><br>
-          <div id="div4"><a class="dropdown-item" href="other.php">Other Brands</a></div>
-          </li>
-          <li><a href="contact.php">Contact</a></li>
-        </ul>
-        <div class="nav navbar-nav navbar-right">        
-        <?php  
-        if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-            echo '<li class="dropdown"><a href="#" button class="btn btn-secondary dropsown-toggle" data-toggle="dropdown" aria-haspopup="true" style="text-align:left"><span class="glyphicon glyphicon-user"></span> Account</a>
-            <div class="dropdown-menu">
-            <a class="dropdown-item" href="reset-password.php">Reset Password</a><br>
-            </div></li>
-            <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
-            <li><a href="logout.php"><span class="glyphicon glyphicon-off"></span> Logout</a></li>';
-            
-        } else {
-            echo '<li><a href="login.php"><span class="glyphicon glyphicon-user"></span> Login</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
-            <li><a href="register.php"><span class="glyphicon glyphicon-pencil"></span> Sign Up</a></li>
-            </div>
-          </div>';
-        }
-        ?>
-        </div>
-      </div>
-    </div>
-  </nav>
-  
-
+<?php
+require "header.php";
+?>
 <div class="text-center" data-gr-c-s-loaded="true">
   <div class="form-signin">
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
@@ -211,24 +122,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   <p>Don't have an account? <a href="register.php">Sign up now</a>.</p>
   <p class="mt-5 mb-3 text-muted">© 2018-2019</p>
 
-
-  
     </form>
   </div>
 </div>
-
-
-
-      
-   
-    
     </div><br><br>
-    <footer class="container-fluid text-center">
-      <p>Online Store Copyright</p>  
-      <form class="form-inline">Get deals:
-        <input type="email" class="form-control" size="50" placeholder="Email Address">
-        <button type="button" class="btn btn-danger">Sign Up</button>
-      </form>
-    </footer>      
-</body>
-</html>
+    <?php
+require "footer.php";
+?>

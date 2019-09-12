@@ -1,91 +1,62 @@
 <?php
-// Initialize the session
-session_start(); 
-// Create database connection
-$db = mysqli_connect("localhost", "id10588493_admin", "123456", "id10588493_gosmart");
+require "header.php";
 ?>
-
-<!DOCTYPE html>
-  <html lang="en">
-  <head>
-  <title>GoSmart</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="../styles/style.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <script src="typeahead.min.js"></script>
-    <script src="../js/imagezoom.js"></script>
-  </head>
-  <body>
-<header>
-  <div class="jumbotron">
-    <div class="container text-center">
-      <h1>GoSmart</h1>
-      <p>Get your house ready for the future!</p>
+<div id="contact" class="container-fluid bg-grey">
+  <h1 class="text-center">CONTACT US</h1>
+  <hr class="hr1">
+  <div class="row">
+    <div class="col-sm-5">
+      <p>Contact us and we'll get back to you within 24 hours.</p>
+      <p><span class="glyphicon glyphicon-map-marker"></span> Melbourne, Aus</p>
+      <p><span class="glyphicon glyphicon-phone"></span> +61 123 456 789 </p>
+      <p><span class="glyphicon glyphicon-envelope"></span> ait@ait.nsw.edu.au</p>
+    </div>
+    <div class="col-sm-7 slideanim">
+      <div class="row">
+        <div class="col-sm-6 form-group">
+            <form name="contactform" action="formtoemail.php" method="post" id="contact-form" class="text-left w-75">
+              <input class="form-control" id="name" name="name" placeholder="Name" type="text" required="">
+        </form></div>
+        <div class="col-sm-6 form-group">
+          <input class="form-control" id="email" name="email" placeholder="Email" type="email" required="">
+        </div>
+      </div>
+      <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
+      <div class="row">
+        <div class="col-sm-12 form-group">
+          <button class="btn btn-default pull-right" type="submit">Send</button>
+            
+        </div>
+      </div>
     </div>
   </div>
-  <nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <?php
-        if(isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] == true){
-            echo '<a class="navbar-brand" href="welcome.php" >GoSmart</a>';
-        } else {
-            echo '<a class="navbar-brand" href="index.php" >GoSmart</a>';
-        }
-        ?>
-      </div>
-      <div class="collapse navbar-collapse" id="myNavbar">
-        <ul class="nav navbar-nav">
-        <?php
-        if(isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] == true){
-            echo '<li><a href="../welcome.php">Home</a></li>';
-        } else {
-            echo '<li><a href="../index.php">Home</a></li>';
-        }
-        ?>
-          <li class="dropdown"><a href="product.php" button class="btn btn-secondary dropdown-toggle" id="dropdownMenu5" data-toggle="dropdown" aria-haspopup="true" style="text-align:left">Products</a><div class="dropdown-menu">
-          <div id="div1"><a class="dropdown-item" href="google.php">Google</a></div><br>
-          <div id="div2"><a class="dropdown-item" href="apple.php">Apple</a></div><br>
-          <div id="div3"><a class="dropdown-item" href="amazon.php">Amazon</a></div><br>
-          <div id="div4"><a class="dropdown-item" href="other.php">Other Brands</a></div>
-          </li>
-          <li><a href="contact.php">Contact</a></li>
-        </ul>
-        <div class="nav navbar-nav navbar-right">        
-        <?php  
-        if(isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] == true){
-            echo '<li class="dropdown"><a href="#" button class="btn btn-secondary dropsown-toggle" data-toggle="dropdown" aria-haspopup="true" style="text-align:left"><span class="glyphicon glyphicon-user"></span> Account</a>
-            <div class="dropdown-menu">
-            <a class="dropdown-item" href="reset-password.php">Reset Password</a><br>
-            </div></li>
-            <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
-            <li><a href="logout.php"><span class="glyphicon glyphicon-off"></span> Logout</a></li>';
-            
-        } else {
-            echo '<li><a href="login.php"><span class="glyphicon glyphicon-user"></span> Login</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
-            <li><a href="register.php"><span class="glyphicon glyphicon-pencil"></span> Sign Up</a></li>
-            </div>
-          </div>';
-        }
-        ?>
-    </div>
-  </nav>
+</div>
 
-    <footer class="container-fluid text-center">
-      <p>Online Store Copyright</p>  
-      <form class="form-inline">Get deals:
-        <input type="email" class="form-control" size="50" placeholder="Email Address">
-        <button type="button" class="btn btn-danger">Sign Up</button>
-      </form>
-    </footer> 
-</body>
-</html>
+<div id="googleMap" style="height:400px;width:100%;"></div>
+<script>
+function myMap() {
+var myCenter = new google.maps.LatLng(-37.818225, 144.954731);
+var mapProp = {center:myCenter, zoom:17, scrollwheel:false, draggable:false, mapTypeId:google.maps.MapTypeId.ROADMAP};
+var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+var marker = new google.maps.Marker({position:myCenter});
+marker.setMap(map);
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBGSKubr8zQZdyapHs8aQ60cVwzYP94EKE&callback=myMap"></script>
+
+<!--<div id="googleMap" style="width:100%;height:400px;"></div>
+
+<script>
+function myMap() {
+var uni = {lat: -37.818225, lng: 144.954731};
+
+var map = new google.maps.Map(document.getElementById("googleMap"),{zoom: 17, center: uni});
+
+var marker = new google.maps.Marker({position: uni, map: map})
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBGSKubr8zQZdyapHs8aQ60cVwzYP94EKE&callback=myMap"></script>-->
+<?php
+require "footer.php";
+?>
+

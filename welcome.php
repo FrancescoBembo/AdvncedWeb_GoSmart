@@ -54,7 +54,11 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         <div class="nav navbar-nav navbar-right">        
         <?php  
         if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-            echo '<li class="dropdown"><a href="#" button class="btn btn-secondary dropsown-toggle" data-toggle="dropdown" aria-haspopup="true" style="text-align:left"><span class="glyphicon glyphicon-user"></span> Account</a>
+            echo '
+            <li><input type="text" id="myInput" size="30" onkeyup="showResult(this.value)">
+                 <div id="livesearch"></div>
+                 <script>showResult(str)</script></li>
+            <li class="dropdown"><a href="#" button class="btn btn-secondary dropsown-toggle" data-toggle="dropdown" aria-haspopup="true" style="text-align:left"><span class="glyphicon glyphicon-user"></span> Account</a>
             <div class="dropdown-menu">
             <a class="dropdown-item" href="reset-password.php">Reset Password</a><br>
             </div></li>
@@ -130,12 +134,6 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         <a href="logout.php" class="btn btn-default">Sign Out of Your Account</a>
         -->
     </p>
-    <footer class="container-fluid text-center">
-      <p>Online Store Copyright</p>  
-      <form class="form-inline">Get deals:
-        <input type="email" class="form-control" size="50" placeholder="Email Address">
-        <button type="button" class="btn btn-default">Sign Up</button>
-      </form>
-    </footer> 
-</body>
-</html>
+ <?php
+ require "footer.php";
+ ?>
