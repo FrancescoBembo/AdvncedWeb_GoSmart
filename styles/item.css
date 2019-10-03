@@ -1,0 +1,23 @@
+.row {
+    display: flex;
+    padding: 50px;
+    align-items: center;
+}
+* {
+  box-sizing: border-box;
+}
+.col {
+    margin-left: 250px;
+    width: 50%;
+    height: 700px;
+}
+.col2 {
+    margin-left: 100px;
+    width: 50%;
+    height: 700px;
+}
+
+.img-zoom-result {
+    width: 400px;
+    height: 300px;
+}
