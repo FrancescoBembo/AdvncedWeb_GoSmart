@@ -1,8 +1,9 @@
 <?php
 session_start();
 // Create database connection
-$db = mysqli_connect("localhost", "id10588493_admin", "123456", "id10588493_gosmart");
+require "config.php";
 ?>
+<!--Cart-->
 <?php
 require ("dbcontroller.php");
 $db_handle = new DBController();
@@ -46,7 +47,50 @@ switch($_GET["action"]) {
 	break;	
 }
 }
-?>	
+?>
+<!--Wishlist-->
+<?php
+if(!empty($_GET["action"])) {
+  switch($_GET["action"]) {
+    case "add":
+      if(isset($_GET["action"])) {
+        $productByID = $db_handle->runQuery("SELECT * FROM products WHERE p_id='" . $_GET["p_id"] . "'");
+        $itemArray = array($productByID[0]["p_id"]=>array('p_name'=>$productByID[0]["p_name"], 'p_id'=>$productByID[0]["p_id"], 'quantity'=>$_POST["quantity"], 'p_price'=>$productByID[0]["p_price"], 'p_image'=>$productByID[0]["p_image"]));
+        
+        if(!empty($_SESSION["wish_item"])) {
+          if(in_array($productByID[0]["p_id"],array_keys($_SESSION["wish_item"]))) {
+            foreach($_SESSION["wish_item"] as $k => $v) {
+                if($productByID[0]["p_id"] == $k) {
+                  if(empty($_SESSION["wish_item"][$k]["quantity"])) {
+                    $_SESSION["wish_item"][$k]["quantity"] = 0;
+                  }
+                  $_SESSION["wish_item"][$k]["quantity"] += $_POST["quantity"];
+                }
+            }
+          } else {
+            $_SESSION["wish_item"] = array_merge($_SESSION["wish_item"],$itemArray);
+          }
+        } else {
+          $_SESSION["wish_item"] = $itemArray;
+        }
+      }
+    break;
+    case "remove":
+      if(!empty($_SESSION["wish_item"])) {
+        foreach($_SESSION["wish_item"] as $k => $v) {
+            if($_GET["p_id"] == $k)
+              unset($_SESSION["wish_item"][$k]);				
+            if(empty($_SESSION["wish_item"]))
+              unset($_SESSION["wish_item"]);
+        }
+      }
+    break;
+    case "empty":
+      unset($_SESSION["wish_item"]);
+    break;	
+  }
+  }
+  ?>
 <!DOCTYPE php>
 <php lang="en">
   <head>
@@ -68,7 +112,18 @@ switch($_GET["action"]) {
     <link rel="stylesheet" href="css/aos.css">
 
     <link rel="stylesheet" href="css/style.css">
-    
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/aos.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/filter.js"></script>
+    <script src="js/categories.js"></script>
   </head>
   <body>
   
@@ -102,27 +157,30 @@ switch($_GET["action"]) {
                 <ul>
                 <?php
                 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+                  $sql = "SELECT * FROM users";
+                  $result = mysqli_query($db, $sql);
+                  $row = mysqli_fetch_array($result);
                     echo '
-                  <li><a href="account.php"><span class="icon icon-person"></span></a></li>
-                  <li><a href="#"><span class="icon icon-heart-o"></span></a></li>
+                  <li><a href="#">Welcome, '.$row["username"].'</a></li>
+                  <li><a href="wishlist.php">Wishlist</a></li>
                   <li>
-                    <a href="cart.php" class="site-cart">
-                      <span class="icon icon-shopping_cart"></span>
+                    <a href="cart.php" class="site-cart" id="cart">
+                      Cart
                     </a>
                   </li>
-                  <li><a href="logout.php"><span class="icon icon-offline_pin"></span></a></li> 
+                  <li><a href="logout.php">Logout</a></li> 
                   <li class="d-inline-block d-md-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle"><span class="icon-menu"></span></a></li>
                 </ul>';
                 } else {
                     echo '
-                  <li><a href="login.php"><span class="icon icon-person"></span></a></li>
-                  <li><a href="#"><span class="icon icon-heart-o"></span></a></li>
+                  <li><a href="login.php">Login</a></li>
+                  <li><a href="wishlist.php">Wishlist</a></li>
                   <li>
-                    <a href="cart.php" class="site-cart">
-                      <span class="icon icon-shopping_cart"></span>
+                    <a href="cart.php" class="site-cart" id="cart">
+                      Cart
                     </a>
                   </li>
-                  <li><a href="register.php"><span class="icon icon-pencil"></span></a></li> 
+                  <li><a href="register.php">Sign Up</a></li>
                   <li class="d-inline-block d-md-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle"><span class="icon-menu"></span></a></li>
                 </ul>';
                 }
@@ -143,24 +201,17 @@ switch($_GET["action"]) {
                 echo '<li class="active"><a href="index.php">Home</a></li>';
             }
             ?>
+            <li><a href="shop.php">All Products</a></li>
             <li class="has-children">
-              <a href="shop.php">Shop</a>
+              <a href="#">Categories</a>
               <ul class="dropdown">
                 <li><a href="Amazon.php">Amazon</a></li>
-                <li><a href="Google.php">Google</a></li>
                 <li><a href="Apple.php">Apple</a></li>
-                <li class="has-children">
-                  <a href="other.php">Other Brands</a>
-                  <ul class="dropdown">
-                    <li><a href="#">Menu One</a></li>
-                    <li><a href="#">Menu Two</a></li>
-                    <li><a href="#">Menu Three</a></li>
-                  </ul>
-                </li>
+                <li><a href="Google.php">Google</a></li>
+                <li><a href="other.php">Other Brands</a></li>
               </ul>
             </li>
-            <li><a href="#">Catalogue</a></li>
-            <li><a href="#">New Arrivals</a></li>
+            <li><a href="aboutus.php">About Us</a></li>
             <li><a href="contact.php">Contact</a></li>
           </ul>
         </div>

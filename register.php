@@ -78,8 +78,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
                 // Redirect to login page
-                echo "<script type='text/javascript'>alert('submitted successfully!')</script>";
-                header("location: login.php");
+                echo "<script type='text/javascript'>alert('Successfully signed up!')</script>";
+                header("location: index.php");
             } else{
                 echo "Something went wrong. Please try again later.";
             }
@@ -125,8 +125,8 @@ require "header.php";
                 <span class="help-block"><?php echo $confirm_password_err; ?></span>
             </div>
             <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="Submit">
-                <input type="reset" class="btn btn-default" value="Reset">
+                <input type="submit" class="btn btn-sm btn-primary" value="Submit">
+                <input type="reset" class="btn btn-sm btn-default" value="Reset">
             </div>
             <p>Already have an account? <a href="login.php">Login here</a>.</p>
         </form>

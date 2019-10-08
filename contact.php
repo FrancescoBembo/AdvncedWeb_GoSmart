@@ -3,92 +3,102 @@ require "header.php";
 ?>
 
 <div class="bg-light py-3">
-      <div class="container">
-        <div class="row">
-        <?php
-        if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
-          echo '<div class="col-md-12 mb-0"><a href="welcome.php">Home</a> <span class="mx-2 mb-0">/</span> <strong class="text-black"> Contact</strong></div>';
-        } else {
-          echo '<div class="col-md-12 mb-0"><a href="index.php">Home</a> <span class="mx-2 mb-0">/</span> <strong class="text-black"> Contact</strong></div>';
-        }
-        ?>
-        </div>
-      </div>
-    </div> 
+  <div class="container">
+    <div class="row">
+    <?php
+    if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+      echo '<div class="col-md-12 mb-0"><a href="welcome.php">Home</a> <span class="mx-2 mb-0">/</span> <strong class="text-black"> Contact</strong></div>';
+    } else {
+      echo '<div class="col-md-12 mb-0"><a href="index.php">Home</a> <span class="mx-2 mb-0">/</span> <strong class="text-black"> Contact</strong></div>';
+    }
+    ?>
+    </div>
+  </div>
+</div> 
 
 <div class="site-section">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <h2 class="h3 mb-3 text-black">Get In Touch</h2>
-          </div>
-          <div class="col-md-7">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2 class="h3 mb-3" style="color:black">Get In Touch</h2>
+      </div>
+      <div class="col-md-7">
 
-            <form action="#" method="post">
-              
-              <div class="p-3 p-lg-5 border">
-                <div class="form-group row">
-                  <div class="col-md-6">
-                    <label for="c_fname" class="text-black">First Name <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="c_fname" name="c_fname">
-                  </div>
-                  <div class="col-md-6">
-                    <label for="c_lname" class="text-black">Last Name <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="c_lname" name="c_lname">
-                  </div>
-                </div>
-                <div class="form-group row">
-                  <div class="col-md-12">
-                    <label for="c_email" class="text-black">Email <span class="text-danger">*</span></label>
-                    <input type="email" class="form-control" id="c_email" name="c_email" placeholder="">
-                  </div>
-                </div>
-                <div class="form-group row">
-                  <div class="col-md-12">
-                    <label for="c_subject" class="text-black">Subject </label>
-                    <input type="text" class="form-control" id="c_subject" name="c_subject">
-                  </div>
-                </div>
-
-                <div class="form-group row">
-                  <div class="col-md-12">
-                    <label for="c_message" class="text-black">Message </label>
-                    <textarea name="c_message" id="c_message" cols="30" rows="7" class="form-control"></textarea>
-                  </div>
-                </div>
-                <div class="form-group row">
-                  <div class="col-lg-12">
-                    <input type="submit" class="btn btn-primary btn-lg btn-block" value="Send Message">
-                  </div>
-                </div>
+        <form action="#" method="post" data-aos="zoom-in">
+          
+          <div class="p-3 p-lg-5 border">
+            <div class="form-group row">
+              <div class="col-md-6">
+                <label for="c_fname" class="text-black">First Name <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="c_fname" name="c_fname">
               </div>
-            </form>
+              <div class="col-md-6">
+                <label for="c_lname" class="text-black">Last Name <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="c_lname" name="c_lname">
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-md-12">
+                <label for="c_email" class="text-black">Email <span class="text-danger">*</span></label>
+                <input type="email" class="form-control" id="c_email" name="c_email" placeholder="">
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-md-12">
+                <label for="c_subject" class="text-black">Subject </label>
+                <input type="text" class="form-control" id="c_subject" name="c_subject">
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <div class="col-md-12">
+                <label for="c_message" class="text-black">Message </label>
+                <textarea name="c_message" id="c_message" cols="30" rows="7" class="form-control"></textarea>
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-lg-12">
+                <input type="submit" class="btn btn-primary btn-lg btn-block" value="Send Message" onclick="myFunction()">
+                <script>
+                function myFunction() {
+                  alert("Thank you! We wil contact you soon!");
+                  window.location = "index.php";
+                }
+                </script>
+              </div>
+            </div>
           </div>
-          <div class="col-md-5 ml-auto">
-            <div class="p-4 border mb-3">
-              <span class="d-block text-primary h6 text-uppercase">Melbourne</span>
-              <p class="mb-0">120 Spencer St, Melbourne VIC Australia 3000</p>
-            </div>
-            <div class="p-4 border mb-3">
-              <span class="d-block text-primary h6 text-uppercase">More stores coming up...</span>
-              <p class="mb-0">More stores coming up...</p>
-            </div>
+        </form>
+      </div>
+      <div class="col-md-5 ml-auto">
+        <div class="p-4 border mb-3">
+          <a href="#collapseContent1" data-toggle="collapse" aria-expanded="false" aria-controls="collapseContent1"><span class="d-block text-primary h6 text-uppercase">Melbourne</span></a>
+          <div class="collapse" id="collapseContent1">
+            <p class="mb-0">120 Spencer St, Melbourne VIC 3000</p>
           </div>
         </div>
-      </div>
+        <div class="p-4 border mb-3">
+          <a href="#collapseContent2" data-toggle="collapse" aria-expanded="false" aria-controls="collapseContent2"><span class="d-block text-primary h6 text-uppercase">More stores coming up...</span></a>
+          <div class="collapse" id="collapseContent2">
+            <p class="mb-0">More stores coming up...</p>
+          </div>
+        </div>
+      </>
     </div>
+    <div id="googleMap" style="height:400px;width:100%;"></div>
+    <script>
+      function myMap() {
+      var myCenter = new google.maps.LatLng(-37.818225, 144.954731);
+      var mapProp = {center:myCenter, zoom:17, scrollwheel:true, draggable:true, mapTypeId:google.maps.MapTypeId.ROADMAP};
+      var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+      var marker = new google.maps.Marker({position:myCenter});
+      marker.setMap(map);
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB6uhZhRrpe1_-2AACZ5YuO9bAdEkt92Ww&callback=myMap"></script>
+  </div>
+</div>
 
-<div id="googleMap" style="height:400px;width:100%;"></div>
-<script>
-function myMap() {
-var myCenter = new google.maps.LatLng(-37.818225, 144.954731);
-var mapProp = {center:myCenter, zoom:17, scrollwheel:false, draggable:false, mapTypeId:google.maps.MapTypeId.ROADMAP};
-var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
-var marker = new google.maps.Marker({position:myCenter});
-marker.setMap(map);
-}
-</script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBGSKubr8zQZdyapHs8aQ60cVwzYP94EKE&callback=myMap"></script>
 <br><br>
 <?php
 require "footer.php";
