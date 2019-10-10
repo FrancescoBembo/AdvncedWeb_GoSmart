@@ -2,7 +2,7 @@
 require "config.php";
 
 $sql = "SELECT * FROM products ORDER BY p_name ASC";
-$result = mysqli_query($db, $sql);
+$result = mysqli_query($link, $sql);
 	if(mysqli_num_rows($result) > 0){
 		while($row = mysqli_fetch_array($result)){
 			echo '

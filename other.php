@@ -21,25 +21,25 @@ require "header.php";
     <div class="row mb-5">
       <div class="row">
       <?php
-      $x = 16;
-      while($x <=52){
-      $sql = "SELECT * FROM products WHERE p_id = $x";
-      $result = mysqli_query($db, $sql);
-      $row = mysqli_fetch_array($result);
-      echo '
-        <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
-          <div class="block-4 text-center border">
-            <figure class="block-4-image">
-              <a href="'.$row['p_link'].'"><img src="'.$row["p_image"].'" style="width:100%"></a>
-            </figure>
-            <div class="block-4-text p-4">
-              <h3><a href="'.$row["p_link"].'">'.$row["p_name"].'</a></h3>
-              <p class="mb-0">'.$row["p_brand"].'</p>
-              <p class="text-primary font-weight-bold">$'.$row["p_price"].'</p>
-            </div>    
-          </div>
-        </div>';
-        $x++;
+      $sql = "SELECT * FROM other ORDER BY p_name ASC";
+      $result = mysqli_query($link, $sql);
+      if (mysqli_num_rows($result) > 0) {
+        while ($row = mysqli_fetch_array($result)) {
+        echo '
+          <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
+            <div class="block-4 text-center border">
+              <figure class="block-4-image">
+                <a href="'.$row['p_link'].'"><img src="'.$row["p_image"].'" style="width:100%"></a>
+              </figure>
+              <div class="block-4-text p-4">
+                <h3><a href="'.$row["p_link"].'">'.$row["p_name"].'</a></h3>
+                <p class="mb-0">'.$row["p_brand"].'</p>
+                <p class="text-primary font-weight-bold">$'.$row["p_price"].'</p>
+              </div>    
+            </div>
+          </div>';
+          $x++;
+        }
       }
       ?>
       </div>

@@ -4,7 +4,7 @@ require "config.php";
 $x = 1;
 while($x < 54){
 	$sql = "SELECT * FROM products WHERE p_id = $x";
-	$result = mysqli_query($db, $sql);
+	$result = mysqli_query($link, $sql);
 	$row = mysqli_fetch_array($result);
 	echo '
 	<div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">

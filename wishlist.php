@@ -1,6 +1,19 @@
 <?php
 require "header.php";
 ?>
+<div class="bg-light py-3">
+  <div class="container">
+    <div class="row">
+      <?php
+      if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+        echo '<div class="col-md-12 mb-0"><a href="welcome.php">Home</a> <span class="mx-2 mb-0">/</span> Wishlist</div>';
+      } else {
+        echo '<div class="col-md-12 mb-0"><a href="index.php">Home</a> <span class="mx-2 mb-0">/</span> Wishlist</div>';
+      }
+      ?>
+    </div>
+  </div>
+</div> 
 <?php
 if(isset($_SESSION["wish_item"])){
 	$total_quantity = 0;
@@ -28,8 +41,8 @@ if(isset($_SESSION["wish_item"])){
 							<tr>
 								<td class="product-name"><?php echo $item["p_name"]; ?></td>
 								<td class="product-thumbnail"><img src="<?php echo $item["p_image"]; ?>" class="img-fluid" /></td>
-								<td class="product-price" style="text-align:right;"><?php echo "$ ".$item["p_price"]; ?></td>
-								<td class="product-remove" style="text-align:center;"><a href="wishlist.php?action=remove&p_id=<?php echo $item["p_id"]; ?>" class="btnRemoveAction"><span class="icon icon-trash icon-2x"></span> Remove</a></td>
+								<td class="product-price" style="text-align:center;"><?php echo "$ ".$item["p_price"]; ?></td>
+								<td class="product-remove" style="text-align:center;"><a href="wishlist.php?action=remove&p_id=<?php echo $item["p_id"]; ?>" class="btnRemoveAction" style="font-size: 25px;"><span class="icon icon-trash icon-2x"></span></a></td>
 							</tr>
 							
 							<?php
@@ -68,9 +81,8 @@ if(isset($_SESSION["wish_item"])){
 			<?php
 		}
 		?>
+		</div>
 	</div>
-</div>
-</div>
 <?php
 require "footer.php";
 ?>

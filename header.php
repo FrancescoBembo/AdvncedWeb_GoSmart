@@ -1,11 +1,11 @@
 <?php
 session_start();
 // Create database connection
-require "config.php";
+$link = mysqli_connect('localhost', 'id10588493_admin', '123456', 'id10588493_gosmart');
 ?>
 <!--Cart-->
 <?php
-require ("dbcontroller.php");
+require_once ("dbcontroller.php");
 $db_handle = new DBController();
 if(!empty($_GET["action"])) {
 switch($_GET["action"]) {
@@ -91,16 +91,22 @@ if(!empty($_GET["action"])) {
   }
   }
   ?>
+  <?php
+  $sql = "SELECT * FROM image WHERE image_id = 1";
+  $result = mysqli_query($link, $sql);
+  $row = mysqli_fetch_array($result);
+  ?>
 <!DOCTYPE php>
 <php lang="en">
   <head>
     <title>GoSmart &mdash; By Mason and Francesco</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <meta name="keywords" content="gosmart, ait gosmart, smart home device, mason, francesco">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,400,700"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="fonts/icomoon/style.css">
-    <link rel="icon" href="ProdImages/logo_transparent.png" type="image/ico">
+    <link rel="icon" href="<?php echo'.$row["image"]' ?>" type="image/png">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/magnific-popup.css">
     <link rel="stylesheet" href="css/jquery-ui.css">
@@ -157,32 +163,34 @@ if(!empty($_GET["action"])) {
                 <ul>
                 <?php
                 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-                  $sql = "SELECT * FROM users";
-                  $result = mysqli_query($db, $sql);
+                  $sql = "SELECT username FROM users";
+                  $result = mysqli_query($link, $sql);
                   $row = mysqli_fetch_array($result);
-                    echo '
-                  <li><a href="#">Welcome, '.$row["username"].'</a></li>
-                  <li><a href="wishlist.php">Wishlist</a></li>
+                  ?>
+                  <li><a href="#"><?php echo $row["username"]; ?></a></li>
+                  <li><a href="wishlist.php"><span class="icon-heart"></span> </a></li>
                   <li>
                     <a href="cart.php" class="site-cart" id="cart">
-                      Cart
+                      <span class="icon-shopping_cart"></span>
                     </a>
                   </li>
-                  <li><a href="logout.php">Logout</a></li> 
+                  <li><a href="logout.php"><span class=".icon-off"></span>Logout</a></li> 
                   <li class="d-inline-block d-md-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle"><span class="icon-menu"></span></a></li>
-                </ul>';
+                </ul>
+                <?php
                 } else {
-                    echo '
-                  <li><a href="login.php">Login</a></li>
-                  <li><a href="wishlist.php">Wishlist</a></li>
+                  ?>
+                  <li><a href="login.php"><span class="icon-user"></span></a></li>
+                  <li><a href="wishlist.php"><span class="icon-heart"></span></a></li>
                   <li>
                     <a href="cart.php" class="site-cart" id="cart">
-                      Cart
+                      <span class="icon-shopping_cart"></span>
                     </a>
                   </li>
-                  <li><a href="register.php">Sign Up</a></li>
+                  <li><a href="register.php"><span class="icon-pencil"></span></a></li>
                   <li class="d-inline-block d-md-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle"><span class="icon-menu"></span></a></li>
-                </ul>';
+                </ul>
+                <?php
                 }
                 ?>
               </div> 

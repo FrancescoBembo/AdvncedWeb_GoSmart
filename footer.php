@@ -4,7 +4,7 @@
       <div class="col-lg-6 mb-5 mb-lg-0">
         <div class="row">
           <div class="col-md-12">
-            <h3 class="footer-heading mb-4">Navigations</h3>
+            <h3 class="footer-heading mb-4">More</h3>
           </div>
           <div class="col-md-6 col-lg-4">
             <ul class="list-unstyled">
@@ -20,13 +20,21 @@
               <li><a href="#">FAQ</a></li>
             </ul>
           </div>
-          <div class="col-md-6 col-lg-4">
-            <ul class="list-unstyled">
-              <li><a href="#" class="fa fa-facebook"></a></li>
-              <li><a href="#" class="fa fa-instagram"></a></li>
-              <li><a href="#" class="fa fa-google"></a></li>
-              <li><a href="#" class="fa fa-twitter"></a></li>
-            </ul>
+          <div class="col-lg-6 mb-5 mb-lg-0">
+            <div class="row">
+              <div class="col-md-12">
+                <h3 class="footer-heading mb-4">Follow Us</h3>
+              </div>
+              <div class="col-md-6 col-lg-4">
+                <ul class="list-unstyled">
+                  <li><a href="http://facebook.com" class="icon-facebook" style="font-size: 20px"></a></li>
+                  <li><a href="http://instagram.com" class="icon-instagram" style="font-size: 20px"></a></li>
+                  <li><a href="http://google.com" class="icon-google" style="font-size: 20px"></a></li>
+                  <li><a href="http://twitter.com" class="icon-twitter" style="font-size: 20px"></a></li>
+                  <li><a href="http://youtube.com" class="icon-youtube" style="font-size: 20px"></a></li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -35,7 +43,7 @@
         <a href="#" class="block-6">
           <?php
           $sql = "SELECT * FROM image WHERE image_id = 1";
-          $result = mysqli_query($db, $sql);
+          $result = mysqli_query($link, $sql);
           $row = mysqli_fetch_array($result);
           echo '<img src="'.$row["image"].'" alt="Image placeholder" class="img-fluid rounded mb-4" height="100px" width="100px">';
           ?>
@@ -58,7 +66,22 @@
             <label for="email_subscribe" class="footer-heading">Subscribe</label>
             <div class="form-group">
               <input type="text" class="form-control py-4" id="email_subscribe" placeholder="Email">
-              <input type="submit" class="btn btn-sm btn-primary" value="Send">
+              <input id="subscribe" type="submit" class="btn btn-sm btn-primary" value="Send" onclick="subscribeFunction()">
+              <script>
+                function subscribeFunction() {
+                  alert("Thank you for your subscription!");
+                }
+              </script>
+              <script>
+                $(document).ready(function() {
+                  $('#content').load('defaultShop.php');
+                  $('div#filter form a').click(function() {
+                    var page = $(this).attr('href');
+                    $('#content').load(page + '.php');
+                    return false;
+                  });
+                });
+              </script>
             </div>
           </form>
         </div>

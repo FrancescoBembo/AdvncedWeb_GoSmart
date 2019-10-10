@@ -1,10 +1,15 @@
 <?php
 include "header.php";
 ?>
+<style>
+  .checked {
+  color: orange;
+}
+</style>
 <?php
 $productID = isset($_GET["id"]) ? $_GET["id"] : 1;
 $sql = "SELECT * FROM products WHERE p_id = $productID";
-$result = mysqli_query($db, $sql);
+$result = mysqli_query($link, $sql);
 
 while($row = mysqli_fetch_array($result)) {
   $prod_id = $row["p_id"];
@@ -40,7 +45,7 @@ while($row = mysqli_fetch_array($result)) {
           <h2 class="text-black"><?php echo $row['p_name']; ?></h2>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur, vitae, explicabo? Incidunt facere, natus soluta dolores iusto! Molestiae expedita veritatis nesciunt doloremque sint asperiores fuga voluptas, distinctio, aperiam, ratione dolore.</p>
           <p class="mb-4">Ex numquam veritatis debitis minima quo error quam eos dolorum quidem perferendis. Quos repellat dignissimos minus, eveniet nam voluptatibus molestias omnis reiciendis perspiciatis illum hic magni iste, velit aperiam quis.</p>
-          <p><strong class="text-primary h4">$<?php echo $row['p_price'] ?></strong></p>
+          <p><strong class="text-dark h4">$<?php echo $row['p_price'] ?></strong></p>
           <div class="mb-5">
             <form method="post" action="cart.php?action=add&p_id=<?php echo $row['p_id']; ?>">
               <div class="input-group mb-3" style="max-width: 120px;">
@@ -55,7 +60,7 @@ while($row = mysqli_fetch_array($result)) {
               <p><input type="submit" value="Add to Cart" class="btn btn-sm btn-primary btnAddAction" /></p>
             </form>
             <form method="post" action="wishlist.php?action=add&p_id=<?php echo $row['p_id']; ?>">
-              <p><input type="submit" name="quantity" value="Add to Wishlist" class="btn btn-sm btn-default btnAddAction" /></p>
+              <p><input type="submit" name="quantity" value="Add to Wishlist" class="btn btn-sm btn-outline-primary btnAddAction" /></p>
             </form>
           </div>
         </div>
@@ -63,10 +68,95 @@ while($row = mysqli_fetch_array($result)) {
     </div>
   </div>
   <br>
+  <div class="site-section block-3 site-blocks-2 bg-light">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-7 site-section-heading text-center pt-4">
+        <h2>Reviews</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12" data-aos="zoom-in">
+        <div class="nonloop-block-3 owl-carousel">
+          <div class="item">
+            <div class="block-4 text-center">
+              <figure class="block-4-image">
+                <div class="block-4-text p-4">
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur, vitae, explicabo? Incidunt facere, natus soluta dolores iusto! Molestiae expedita veritatis nesciunt doloremque sint asperiores fuga voluptas, distinctio, aperiam, ratione dolore.</p>
+                </div>
+              </figure>
+            </div>
+          </div>
+          <div class="item">
+            <div class="block-4 text-center">
+              <figure class="block-4-image">
+                <div class="block-4-text p-4">
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star"></span>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur, vitae, explicabo? Incidunt facere, natus soluta dolores iusto! Molestiae expedita veritatis nesciunt doloremque sint asperiores fuga voluptas, distinctio, aperiam, ratione dolore.</p>
+                </div>
+              </figure>
+            </div>
+          </div>
+          <div class="item">
+            <div class="block-4 text-center">
+              <figure class="block-4-image">
+                <div class="block-4-text p-4">
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur, vitae, explicabo? Incidunt facere, natus soluta dolores iusto! Molestiae expedita veritatis nesciunt doloremque sint asperiores fuga voluptas, distinctio, aperiam, ratione dolore.</p>
+                </div>
+              </figure>
+            </div>
+          </div>
+          <div class="item">
+            <div class="block-4 text-center">
+              <figure class="block-4-image">
+                <div class="block-4-text p-4">
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur, vitae, explicabo? Incidunt facere, natus soluta dolores iusto! Molestiae expedita veritatis nesciunt doloremque sint asperiores fuga voluptas, distinctio, aperiam, ratione dolore.</p>
+                </div>
+              </figure>
+            </div>
+          </div>
+          <div class="item">
+            <div class="block-4 text-center">
+              <figure class="block-4-image">
+                <div class="block-4-text p-4">
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur, vitae, explicabo? Incidunt facere, natus soluta dolores iusto! Molestiae expedita veritatis nesciunt doloremque sint asperiores fuga voluptas, distinctio, aperiam, ratione dolore.</p>
+                </div>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
   <?php
 }
 ?>
-<br><br><br>
 
 
 <?php

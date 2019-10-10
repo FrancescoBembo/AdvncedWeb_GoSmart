@@ -24,7 +24,7 @@ include "header.php";
 					<ul id="cate" class="list-unstyled mb-0">
 						<?php
 						$sql = "SELECT * FROM amazon";
-						if ($result = mysqli_query($db, $sql)) {
+						if ($result = mysqli_query($link, $sql)) {
 							$rowcount = mysqli_num_rows($result);
 							echo '
 							<li class="mb-1"><a href="amazonProd" class="d-flex"><span>Amazon</span> <span class="text-black ml-auto">('.$rowcount.')</span></a></li>';
@@ -32,7 +32,7 @@ include "header.php";
 						?>
 						<?php
 						$sql = "SELECT * FROM apple";
-						if ($result = mysqli_query($db, $sql)) {
+						if ($result = mysqli_query($link, $sql)) {
 							$rowcount = mysqli_num_rows($result);
 							echo '
 							<li class="mb-1"><a href="appleProd" class="d-flex"><span>Apple</span> <span class="text-black ml-auto">('.$rowcount.')</span></a></li>';
@@ -40,7 +40,7 @@ include "header.php";
 						?>
 						<?php
 						$sql = "SELECT * FROM google";
-						if ($result = mysqli_query($db, $sql)) {
+						if ($result = mysqli_query($link, $sql)) {
 							$rowcount = mysqli_num_rows($result);
 							echo '
 							<li class="mb-1"><a href="googleProd" class="d-flex"><span>Google</span> <span class="text-black ml-auto">('.$rowcount.')</span></a></li>';
@@ -48,7 +48,7 @@ include "header.php";
 						?>
 						<?php
 						$sql = "SELECT * FROM other";
-						if ($result = mysqli_query($db, $sql)) {
+						if ($result = mysqli_query($link, $sql)) {
 							$rowcount = mysqli_num_rows($result);
 							echo '
 							<li class="mb-1"><a href="otherProd" class="d-flex"><span>Other</span> <span class="text-black ml-auto">('.$rowcount.')</span></a></li>';

@@ -24,7 +24,7 @@ require "header.php";
       $x = 8;
       while($x <=13){
       $sql = "SELECT * FROM products WHERE p_id = $x";
-      $result = mysqli_query($db, $sql);
+      $result = mysqli_query($link, $sql);
       $row = mysqli_fetch_array($result);
       echo '
         <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">

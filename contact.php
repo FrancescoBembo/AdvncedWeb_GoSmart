@@ -62,7 +62,6 @@ require "header.php";
                 <script>
                 function myFunction() {
                   alert("Thank you! We wil contact you soon!");
-                  window.location = "index.php";
                 }
                 </script>
               </div>

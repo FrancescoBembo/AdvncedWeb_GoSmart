@@ -4,9 +4,9 @@ include "header.php";
 
 <div class="site-blocks-cover" style="background-image: url(images/Webp.net-resizeimage.jpg);" data-aos="fade">
   <div class="container">
-    <div class="row align-items-start align-items-md-center justify-content-end">
+    <div class="row align-items-start align-items-md-center justify-content-start">
       <div class="col-md-5 text-md-left pt-5 pt-md-0">
-        <h1 class="mb-2" style="color: white">Finding Your Perfect Devices</h1>
+        <h1 class="mb-2" style="color: white">Build the house of the future NOW</h1>
         <div class="intro-text text-md-left">
           <p class="mb-4" style="color: white">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus at iaculis quam. Integer accumsan tincidunt fringilla. </p>
           <p>
@@ -67,7 +67,7 @@ include "header.php";
               <figure class="block-4-image">
                 <?php
                 $sql = "SELECT * FROM products WHERE p_id = 8";
-                $result = mysqli_query($db, $sql);
+                $result = mysqli_query($link, $sql);
                 $row = mysqli_fetch_array($result);
                 echo '
                 <a href="'.$row["p_link"].'"><img src="'.$row["p_image"].'" alt="Image placeholder" class="img-fluid"></a>
@@ -85,7 +85,7 @@ include "header.php";
               <figure class="block-4-image">
                 <?php
                 $sql = "SELECT * FROM products WHERE p_id = 15";
-                $result = mysqli_query($db, $sql);
+                $result = mysqli_query($link, $sql);
                 $row = mysqli_fetch_array($result);
                 echo '
                 <a href="'.$row["p_link"].'"><img src="'.$row["p_image"].'" alt="Image placeholder" class="img-fluid"></a>
@@ -103,7 +103,7 @@ include "header.php";
               <figure class="block-4-image">
                 <?php
                 $sql = "SELECT * FROM products WHERE p_id = 20";
-                $result = mysqli_query($db, $sql);
+                $result = mysqli_query($link, $sql);
                 $row = mysqli_fetch_array($result);
                 echo '
                 <a href="'.$row["p_link"].'"><img src="'.$row["p_image"].'" alt="Image placeholder" class="img-fluid"></a>
@@ -121,7 +121,7 @@ include "header.php";
               <figure class="block-4-image">
                 <?php
                 $sql = "SELECT * FROM products WHERE p_id = 30";
-                $result = mysqli_query($db, $sql);
+                $result = mysqli_query($link, $sql);
                 $row = mysqli_fetch_array($result);
                 echo '
                 <a href="'.$row["p_link"].'"><img src="'.$row["p_image"].'" alt="Image placeholder" class="img-fluid"></a>
@@ -139,7 +139,7 @@ include "header.php";
               <figure class="block-4-image">
                 <?php
                 $sql = "SELECT * FROM products WHERE p_id = 40";
-                $result = mysqli_query($db, $sql);
+                $result = mysqli_query($link, $sql);
                 $row = mysqli_fetch_array($result);
                 echo '
                 <a href="'.$row["p_link"].'"><img src="'.$row["p_image"].'" alt="Image placeholder" class="img-fluid"></a>
@@ -169,7 +169,7 @@ include "header.php";
       <div class="col-md-12 col-lg-7 mb-5" data-aos="fade-right">
         <?php
         $sql = "SELECT * FROM image WHERE image_id = 10";
-        $result = mysqli_query($db, $sql);
+        $result = mysqli_query($link, $sql);
         $row = mysqli_fetch_array($result);
         echo '<img src="'.$row["image"].'" alt="Image placeholder" class="img-fluid rounded"></a>';
         ?>

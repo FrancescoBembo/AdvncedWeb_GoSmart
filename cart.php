@@ -1,6 +1,20 @@
 <?php
 include "header.php";
 ?>
+<div class="bg-light py-3">
+  <div class="container">
+    <div class="row">
+      <?php
+      if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+        echo '<div class="col-md-12 mb-0"><a href="welcome.php">Home</a> <span class="mx-2 mb-0">/</span> Cart</div>';
+      } else {
+        echo '<div class="col-md-12 mb-0"><a href="index.php">Home</a> <span class="mx-2 mb-0">/</span> Cart</div>';
+      }
+      ?>
+    </div>
+  </div>
+</div> 
+
 <?php
 if(isset($_SESSION["cart_item"])){
 	$total_quantity = 0;
@@ -30,10 +44,10 @@ if(isset($_SESSION["cart_item"])){
 							<tr>
 								<td class="product-name"><?php echo $item["p_name"]; ?></td>
 								<td class="product-thumbnail"><img src="<?php echo $item["p_image"]; ?>" class="img-fluid" /></td>
-								<td class="product-quantity" style="text-align:right;"><?php echo $item["quantity"]; ?></td>
-								<td class="product-price" style="text-align:right;"><?php echo "$ ".$item["p_price"]; ?></td>
-								<td class="product-total" style="text-align:right;"><?php echo "$ ". number_format($item_price,2); ?></td>
-								<td class="product-remove" style="text-align:center;"><a href="cart.php?action=remove&p_id=<?php echo $item["p_id"]; ?>" class="btnRemoveAction"><span class="icons icon-trash"></span> Remove</a></td>
+								<td class="product-quantity" style="text-align:center;"><?php echo $item["quantity"]; ?></td>
+								<td class="product-price" style="text-align:center;"><?php echo "$ ".$item["p_price"]; ?></td>
+								<td class="product-total" style="text-align:center;"><?php echo "$ ". number_format($item_price,2); ?></td>
+								<td class="product-remove" style="text-align:center;"><a href="cart.php?action=remove&p_id=<?php echo $item["p_id"]; ?>" class="btnRemoveAction" style="font-size: 25px;"><span class="icons icon-trash"></span></a></td>
 							</tr>
 							
 							<?php
@@ -128,9 +142,8 @@ if(isset($_SESSION["cart_item"])){
 			<?php 
 		}
 		?>
+		</div>
 	</div>
-</div>
-</div>
 <?php
 require "footer.php";
 ?>

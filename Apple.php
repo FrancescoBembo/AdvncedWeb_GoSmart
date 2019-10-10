@@ -25,7 +25,7 @@ require "header.php";
             <figure class="block-4-image">
               <?php
               $sql = "SELECT * FROM products WHERE p_id = 14";
-              $result = mysqli_query($db, $sql);
+              $result = mysqli_query($link, $sql);
               $row = mysqli_fetch_array($result);
               echo '<a href="'.$row['p_link'].'"><img src="'.$row["p_image"].'" style="width:100%"></a>';
               echo '<div class="block-4-text p-4">
@@ -42,7 +42,7 @@ require "header.php";
             <figure class="block-4-image">
               <?php
               $sql = "SELECT * FROM products WHERE p_id = 53";
-              $result = mysqli_query($db, $sql);
+              $result = mysqli_query($link, $sql);
               $row = mysqli_fetch_array($result);
               echo '<a href="'.$row['p_link'].'"><img src="'.$row["p_image"].'" style="width:100%"></a>';
               echo '<div class="block-4-text p-4">
@@ -59,7 +59,7 @@ require "header.php";
             <figure class="block-4-image">
               <?php
               $sql = "SELECT * FROM products WHERE p_id = 15";
-              $result = mysqli_query($db, $sql);
+              $result = mysqli_query($link, $sql);
               $row = mysqli_fetch_array($result);
               echo '<a href="'.$row['p_link'].'"><img src="'.$row["p_image"].'" style="width:100%"></a>';
               echo '<div class="block-4-text p-4">
